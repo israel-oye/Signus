@@ -132,23 +132,23 @@ def callback():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # code to validate and add user to database goes here
+    
     if request.method == 'POST':
         email = request.form.get('email')
         name = request.form.get('name')
         password = request.form.get('password')
 
-        user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+        user = User.query.filter_by(email=email).first()
 
-        if user: # if a user is found, we want to redirect back to signup page so user can try again
+        if user: 
             flash("Email is taken!", 'danger')
             return redirect(url_for('signup'))
 
-        # create a new user with the form data. Hash the password so the plaintext version isn't saved.
+        
         new_user = User(email=email, name=name)
         new_user.set_password(password)
 
-        # add the new user to the database
+        
         db.session.add(new_user)
         db.session.commit()
 
