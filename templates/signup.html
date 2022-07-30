@@ -1,0 +1,39 @@
+{% extends 'layout.html' %} {% block title %}Login{% endblock %} {% block body %}
+<style>
+    .form-w {
+        width: 28.125em;
+    }
+</style>
+<div class="row">
+    <div class="d-flex justify-content-center col">
+
+        <div class="shadow p-3 mb-5 rounded form-w card">
+            <div class="card-body">
+                <form action="" method="post" class="p-3">
+
+                    <div class="mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" value="" autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="" autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="">Password</label>
+                        <input type="password" name="password" class="form-control" value="">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-outline-success mt-2">Sign Up</button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

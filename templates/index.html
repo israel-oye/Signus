@@ -1,0 +1,10 @@
+{% extends 'layout.html' %} {% block title %} Home {% endblock %} {% block body %}
+<div class="container bg-light rounded">
+    <h1>Hello! </h1>
+    <a href="{{url_for('login')}}" class="btn btn-primary">Login</a>
+    <a href="{{url_for('signup')}}" class="btn btn-outline-success">Sign Up</a>
+    <a href="{{url_for('login')}}" class="btn btn-lg btn-outline-dark"><i class="fa-brands fa-google"></i> Sign Up with Google</a>
+
+</div>
+
+{% endblock %}
