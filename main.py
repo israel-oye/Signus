@@ -62,14 +62,14 @@ def login():
         return redirect(url_for('profile'))
 
     elif request.method == 'POST':
-        u_email = request.form['email']
-        password_candidate = request.form['password']
+        # u_email = request.form['email']
+        # password_candidate = request.form['password']
 
-        user = User.query.filter_by(email=u_email).first()
+        # user = User.query.filter_by(email=u_email).first()
 
-        if user and user.check_password(password_candidate):
-            login_user(user)
-            return redirect(url_for('profile'))
+        # if user and user.check_password(password_candidate):
+        #     login_user(user)
+        #     return redirect(url_for('profile'))
 
     
         google_provider_cfg = get_google_provider_cfg()
@@ -156,21 +156,22 @@ def signup():
         return redirect(url_for('profile')) 
     return render_template("signup.html")
 
-# @app.route("/regular_login", methods=['GET', 'POST'])
-# def r_login():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('profile'))
+@app.route("/regular_login", methods=['GET', 'POST'])
+def r_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('profile'))
 
-#     if request.method == 'POST':
-#         u_email = request.form['email']
-#         password_candidate = request.form['password']
+    if request.method == 'POST':
+        u_email = request.form['email']
+        password_candidate = request.form['password']
 
-#         user = User.query.filter_by(email=u_email).first()
+        user = User.query.filter_by(email=u_email).first()
 
-#         if user and user.check_password(password_candidate):
-#             return redirect(url_for('index'))
+        if user and user.check_password(password_candidate):
+            login_user(user)
+            return redirect(url_for('index'))
 
-#     return render_template("login.html")
+    return render_template("login.html")
 
 @app.route("/logout", methods=['GET', 'POST'])
 @login_required
