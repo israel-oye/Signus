@@ -3,6 +3,8 @@
 
 ### dotenv ###
 .env
+./signus.db
+./client_secret.json
 
 ### Flask ###
 instance/*

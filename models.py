@@ -13,19 +13,24 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String())
     authenticated = db.Column(db.Boolean, default=False)
 
-    def __init__(self) -> None:
-        self.id = id
+    # def __init__(self, name, email) -> None:
+    #     self.name = name
+    #     self.email = email
+        
         
 
     def __repr__(self) -> str:
         return super().__repr__()
 
+    @property
     def is_active(self):
         return True
 
+    
     def get_id(self):
         return self.id
 
+    @property
     def is_authenticated(self):
         return True
 

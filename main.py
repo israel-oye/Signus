@@ -128,7 +128,7 @@ def callback():
 
     login_user(user)
 
-    return redirect(url_for('index'))
+    return redirect(url_for('profile'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -152,7 +152,9 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        flash("Sign up successfull", 'success')
+        flash("Sign up successful", 'success')
+        login_user(new_user)
+        app.logger.info(current_user.is_authenticated)
         return redirect(url_for('profile')) 
     return render_template("signup.html")
 
@@ -169,7 +171,7 @@ def r_login():
 
         if user and user.check_password(password_candidate):
             login_user(user)
-            return redirect(url_for('index'))
+            return redirect(url_for('profile'))
 
     return render_template("login.html")
 
