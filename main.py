@@ -41,6 +41,10 @@ def get_google_provider_cfg():
 def index():
     return render_template("index.html")
 
+@app.route("/privacypolicy")
+def policy():
+    return render_template("policy.html")
+
 @app.route("/profile", methods=['GET'])
 @login_required
 def profile():
