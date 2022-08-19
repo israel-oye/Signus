@@ -4,6 +4,7 @@ from oauthlib.oauth2 import WebApplicationClient
 from flask import Flask, flash, render_template, request, url_for, redirect
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRF
 from models import User, db
 
 load_dotenv()
@@ -12,6 +13,7 @@ app = Flask(__name__)
 login_manager = LoginManager()
 
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL").replace("postgres://", "postgresql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -186,6 +188,5 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-    app.run(ssl_context="adhoc")
+    app.run()
     
